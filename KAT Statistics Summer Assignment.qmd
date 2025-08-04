@@ -48,21 +48,8 @@ The code box below reads the spreadsheet from Google Drive.
 ```{r}
 url = "https://docs.google.com/spreadsheets/d/1lYL1TvyNuLsGGCRR016CLqnd98x43ljM7bpJN7IEWkc"
 df = read_sheet(url, sheet = "Date/Block Dataset") |> select(quiz_type, percent) |> drop_na()
-```
-
-Then, a prompt will show up at the bottom of the screen. It will ask you how you want to log in. Tell it to "Send me to the browser for a new auth process".
-
-![](images/clipboard-1045403532.png)
-
-Then log in online using your Kehillah Google account. Make sure to check boxes for all the permissions, if it asks.
-
 # 5. Extract the FRQ and MCQ scores
 
-The code below will extract the FRQ scores and MCQ scores into variables that we can use later.
-
-**Click on the greed triangle in the upper right corner of the code box.**
-
-```{r}
 frq_scores = df |> filter(quiz_type == "FRQ") |> pull(percent)
 mcq_scores = df |> filter(quiz_type == "MCQ") |> pull(percent)
 ```
@@ -96,7 +83,7 @@ hist(frq_scores)
 Edit the code block box below so it's like the one from step 8, but this time for the `mcq_scores` and then run it.It will make a histogram plot of the MCQ scores.
 
 ```{r}
-
+hist(mcq_scores)
 ```
 
 # 10. Send me your code
